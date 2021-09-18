@@ -55,11 +55,9 @@
 }
 
 #question-form form textarea {
-  resize: none;
+  resize: none; /* não consegue mais puxar textarea */
   background: transparent;
-
   width: 100%;
-
   outline: none;
 }
 
