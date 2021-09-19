@@ -14,13 +14,14 @@ module.exports = {
     }
 
     //parseInt transformando string em numero
-    await db.run(`INSERT INTO rooms(
+    const foundInstructor = await db.run(`INSERT INTO rooms(
       id,
       pass
     )VALUES (
       ${parseInt(roomId)},
       ${pass}
     )`);
+
     await db.close();
 
     res.redirect(`/room/${roomId}`);
