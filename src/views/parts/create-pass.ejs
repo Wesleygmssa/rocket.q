@@ -1,13 +1,12 @@
-
-        <section>
-          <h2>Crie sua própria sala</h2>
-          <form action="">
-            <!-- Conctando label ao input utilizando for e id -->
-            <label class="sr-only" for="room-id">Insira uma senha</label>
-            <input type="password" id="room-pass" placeholder="Insira uma senha">
-            <button>
-              <img src="images/users-white.svg" alt="Entrar na sala">
-              Criar Sala
-            </button>
-          </form>
-        </section>
+<section>
+  <h2>Crie sua própria sala</h2>
+  <form action="/create-room" method="POST">
+      <label class="sr-only" for="room-pass">Insira uma senha</label>
+      <input type="password" name="password" id="room-pass" placeholder="Insira uma senha">
+      <button>
+          <img src="images/users-white.svg" alt="Entrar na sala">
+          Criar Sala
+          </button>
+  </form>
+</section>     
+              
