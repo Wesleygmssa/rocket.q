@@ -14,7 +14,6 @@ const initDb = {
     )`);
 
     await db.close();
-    d;
   },
 };
 
