@@ -21,9 +21,11 @@ module.exports = {
       ${parseInt(roomId)},
       ${pass}
     )`);
+    console.log(foundInstructor);
 
     await db.close();
 
+    // res.render(`room`);
     res.redirect(`/room/${roomId}`);
   },
 };
