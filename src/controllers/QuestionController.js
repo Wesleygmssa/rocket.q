@@ -12,6 +12,18 @@ module.exports = {
   async create(req, res) {
     const db = await Database();
     const question = req.body.question;
-    const room = req.params.room;
+    const roomId = req.params.room;
+
+    await db.run(`INSERT INTO questions(
+      title,
+      room,
+      read
+    )VALUES(
+      "${question}",
+      ${roomId},
+      0
+    )`);
+
+    res.redirect(`/room/${roomId}`);
   },
 };
