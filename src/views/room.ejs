@@ -49,13 +49,15 @@
       <section id="questions">
         <h2 class="sr-only">Perguntas da comunidade</h2>
         <div class="questions">
-          <div class="question-wrapper">
+          
+          <% questions.forEach(question => { %>
+                 <div class="question-wrapper">
             <div class="question-content">
               <div class="user">
                 <img src="/images/user.svg" alt="user"/>
               </div>
               <div class="question">
-                <p>Qual a diferença entre const, var e let no JavaScript</p>
+                <p><%= question.title %></p>
               </div>
             </div>
   
@@ -70,51 +72,12 @@
               </a>
             </div>
           </div>
+          <%}); %>
+    
+     
 
 
-          <div class="question-wrapper">
-            <div class="question-content">
-              <div class="user">
-                <img src="/images/user.svg" alt="user"/>
-              </div>
-              <div class="question">
-                <p>O que é JavaScript</p>
-              </div>
-            </div>
-  
-            <div class="actions">
-              <a href="#" class="check" data-id="3">
-                <img src="/images/check.svg" alt="check">
-                Marcar como lida
-              </a>
-              <a href="#" class="delete" data-id="3">
-                <img src="/images/trash.svg" alt="excluir">
-                excluir
-              </a>
-            </div>
-          </div>
-
-          <div class="question-wrapper read">
-            <div class="question-content">
-              <div class="user">
-                <img src="/images/user.svg" alt="user"/>
-              </div>
-              <div class="question">
-                <p>O que é TypeScript</p>
-              </div>
-            </div>
-  
-            <div class="actions">
-              <!-- <a href="" class="check">
-                <img src="images/check.svg" alt="check">
-                Marcar como lida
-              </a> -->
-              <a href="#" class="delete">
-                <img src="/images/trash.svg" alt="excluir">
-                excluir
-              </a>
-            </div>
-          </div>
+       
         
         </div>
       </section>
