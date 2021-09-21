@@ -5,27 +5,47 @@ module.exports = {
     const db = await Database();
     const pass = req.body.password; // pegando dados do form
     let roomId;
+    let isRoom = true;
+    while (isRoom) {
+      //Gerando numero
+      for (var i = 0; i < 6; i++) {
+        i == 0
+          ? (roomId = Math.floor(Math.random() * 10).toString())
+          : (roomId += Math.floor(Math.random() * 10).toString());
+      }
 
-    //Gerando numero
-    for (var i = 0; i < 6; i++) {
-      i == 0
-        ? (roomId = Math.floor(Math.random() * 10).toString())
-        : (roomId += Math.floor(Math.random() * 10).toString());
-    }
+      // Verificar se esse numero já existe
+      const roomsExistIds = await db.all(`SELECT id FROM rooms`);
 
-    //parseInt transformando string em numero
-    const foundInstructor = await db.run(`INSERT INTO rooms(
+      //Verificando se a condição existe retorna true
+      isRoom = roomsExistIds.some((roomExistId) => roomExistId === roomId);
+
+      // roomsExistIds.map((roomExistId) => {
+      //   roomExistId === roomId;
+      //   return true;
+      // });
+
+      //Se não exoste id no banco de dados inserir um novo
+      if (!isRoom) {
+        //parseInt transformando string em numero
+        await db.run(`INSERT INTO rooms(
       id,
       pass
-    )VALUES (
-      ${parseInt(roomId)},
-      ${pass}
-    )`);
-    console.log(foundInstructor);
+      )VALUES (
+          ${parseInt(roomId)},
+          ${pass}
+       )`);
+      }
+    }
 
     await db.close();
 
     // res.render(`room`);
     res.redirect(`/room/${roomId}`);
+  },
+  open(req, res) {
+    const { room } = req.params;
+    const roomId = room;
+    res.render("room", { roomId: roomId });
   },
 };

@@ -11,6 +11,7 @@ const initDb = {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       titulo TEXT,
       read INT,
+      sala INT
     )`);
 
     await db.close();

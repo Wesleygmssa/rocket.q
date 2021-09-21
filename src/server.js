@@ -15,7 +15,7 @@ server.use(express.urlencoded({ extended: true })); // conseguindo pegar dados d
 
 server.use(route);
 
-server.listen(3000, () => {
+server.listen(4000, () => {
   console.log("RODANDO");
 });
 
