@@ -8,16 +8,19 @@ module.exports = {
     const action = req.params.action;
     const password = req.body.password;
 
-    //verificar se a senha está correta
+    //buscando a pergunta
     const verifyRoom = await db.get(`SELECT * FROM rooms WHERE id = ${roomId}`);
+    //verificar se a senha está correta
     if (verifyRoom.pass == password) {
       if (action === "delete") {
         await db.run(`DELETE FROM questions WHERE id = ${questionId}`);
       } else if (action === "check") {
         await db.run(`UPDATE questions SET read = 1 WHERE id = ${questionId}`);
       }
+      res.redirect(`/room/${roomId}`);
+    } else {
+      res.render("passincorrect", { roomId, roomId });
     }
-    res.redirect(`/room/${roomId}`);
   },
   async create(req, res) {
     const db = await Database();
