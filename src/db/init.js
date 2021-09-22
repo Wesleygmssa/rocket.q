@@ -1,3 +1,5 @@
+//Criando tabela no banco de dados
+
 const Database = require("./config");
 const initDb = {
   //trabalhando com modulos externo
